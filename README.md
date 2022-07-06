@@ -44,19 +44,23 @@
 
 ### likesテーブル（usersテーブルとarticlesテーブルの中間テーブル）
 |Column|Type|Options|
+|------|----|-------|
 |user_id|int|null: false, foreign_key: true|
 |post_id|int|null: false, foreign_key: true|
 
 ### tagsテーブル
 |Column|Type|Options|
+|------|----|-------|
 |name|string|null: false, unique制約|
 
 ### post_tagテーブル（articlesテーブルとtagsテーブルの中間テーブル）
 |Column|Type|Options|
+|------|----|-------|
 |post_id|int|-------|
 |tag_id|int|-------|
 
 ### followsテーブル（usersテーブルとusersテーブルの中間テーブル）
 |Column|Type|Options|
+|------|----|-------|
 |follower_id|int|-------|
 |followee_id|int|-------|
