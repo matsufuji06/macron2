@@ -3,6 +3,7 @@
 @section('title', '記事一覧')
 
 @section('content')
+  @include('nav')
   <div class="container">
     @foreach($posts as $post)
     <div class="card mt-3">
@@ -21,7 +22,7 @@
         <h3 class="h4 card-title">
           {{$post->food}}
         </h3>
-        <img class="img-thumbnail" src="{{ asset('img/23879131_m.jpg') }}" alt="">
+        <img class="img-fluid" src="{{ asset('img/23879131_m.jpg') }}" alt="">
         <div class="card-text">
         {!! nl2br(e( $post->calorie )) !!} 
         </div>
