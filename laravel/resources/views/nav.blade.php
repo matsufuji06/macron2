@@ -4,25 +4,25 @@
 
   <ul class="navbar-nav ml-auto">
 
-    @guest {{--この行を追加--}}
+    @guest
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a> {{--この行を変更--}}
+      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
     </li>
-    @endguest {{--この行を追加--}}
+    @endguest
 
-    @guest {{--この行を追加--}}
+    @guest
     <li class="nav-item">
       <a class="nav-link" href="">ログイン</a>
     </li>
-    @endguest {{--この行を追加--}}
+    @endguest
       
-    @auth {{--この行を追加--}}
+    @auth
     <li class="nav-item">
       <a class="nav-link" href=""><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
-    @endauth {{--この行を追加--}}
+    @endauth
     
-    @auth {{--この行を追加--}}
+    @auth
     <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -40,11 +40,11 @@
         </button>
       </div>
     </li>
-    <form id="logout-button" method="POST" action="{{ route('logout') }}"> {{--この行を編集--}}
-      @csrf {{--この行を追加--}}
+    <form id="logout-button" method="POST" action="{{ route('logout') }}">
+      @csrf
     </form>
     <!-- Dropdown -->
-    @endauth {{--この行を追加--}}
+    @endauth
 
   </ul>
 
