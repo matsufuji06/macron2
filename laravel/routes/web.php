@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/post', 'PostController@index');
+Route::resource('/posts', 'PostController');
