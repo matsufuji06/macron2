@@ -26,14 +26,14 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'food' => ['required', 'max:50'],
-            'image' => ['file'],
-            'carbo' => ['required', 'number'],
-            'fat' => ['required', 'number'],
-            'protein' => ['required', 'number'],
-            'calorie' => ['required', 'number'],
-            'protein' => ['required', 'number'],
-            'weight' => ['required', 'number'],
+            'food' => 'required|max:50',
+            // 'image' => 'file',
+            'carbo' => 'required|numeric',
+            'fat' => 'required|numeric',
+            'protein' => 'required|numeric',
+            'calorie' => 'required|numeric',
+            'protein' => 'required|numeric',
+            'weight' => 'required|numeric',
         ];
     }
     

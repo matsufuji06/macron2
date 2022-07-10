@@ -2,69 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\Http\Requests\PostRequest;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index()
     {
-        // ダミーデータ
-        $posts = [
-            (object) [
-                'id' => 1,
-                'food' => 'ラーメン１',
-                'image' => '',
-                'calorie' => 1000,
-                'carbo' => 1000,
-                'fat' => 1000,
-                'protein' => 1000,
-                'weight' => 1000,
-                'date' => now(),
-                'created_at' => now(),
-                'user' => (object) [
-                    'id' => 1,
-                    'name' => 'ユーザー名１',
-                ],
-            ],
-            (object) [
-                'id' => 2,
-                'food' => 'ラーメン２',
-                'image' => '',
-                'calorie' => 1000,
-                'carbo' => 1000,
-                'fat' => 1000,
-                'protein' => 1000,
-                'weight' => 1000,
-                'date' => now(),
-                'created_at' => now(),
-                'user' => (object) [
-                    'id' => 2,
-                    'name' => 'ユーザー名２',
-                ],
-            ],
-            (object) [
-                'id' => 3,
-                'food' => 'ラーメン３',
-                'image' => '',
-                'calorie' => 1000,
-                'carbo' => 1000,
-                'fat' => 1000,
-                'protein' => 1000,
-                'weight' => 1000,
-                'date' => now(),
-                'created_at' => now(),
-                'user' => (object) [
-                    'id' => 3,
-                    'name' => 'ユーザー名３',
-                ],
-            ]
-            
-        ];
+        $posts = Post::all()->sortByDesc('created_at');
 
         return view('posts.index', ['posts' => $posts]);
     }
 
     public function create() {
         return view('posts.create');
+    }
+
+    public function store(PostRequest $request, Post $post) {
+        $post->food = $request->food;
+        $post->image = $request->image;
+        $post->carbo = $request->carbo;
+        $post->fat = $request->fat;
+        $post->protein = $request->protein;
+        $post->calorie = $request->calorie;
+        $post->weight = $request->weight;
+        $post->user_id = $request->user()->id;
+        $post->save();
+        return redirect()->route('posts.index');
+
     }
 }
