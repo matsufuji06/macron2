@@ -70,19 +70,19 @@
         <img class="img-fluid" src="{{ asset('img/23879131_m.jpg') }}" alt="">
       </a>
       <div class="card-text">
-        {!! nl2br(e( $post->calorie )) !!} 
+        {{$post->calorie}} 
       </div>
       <div class="card-text">
-        {!! nl2br(e( $post->carbo )) !!} 
+        {{$post->carbo}} 
       </div>
       <div class="card-text">
-        {!! nl2br(e( $post->fat )) !!} 
+        {{$post->fat}} 
       </div>
       <div class="card-text">
-        {!! nl2br(e( $post->protein )) !!} 
+        {{$post->protein}} 
       </div>
       <div class="card-text">
-        {!! nl2br(e( $post->weight )) !!} 
+        {{$post->weight}} 
       </div>
     </div>
   </div>
