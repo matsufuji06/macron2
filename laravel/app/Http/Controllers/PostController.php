@@ -68,4 +68,26 @@ class PostController extends Controller
     public function show(Post $post) {
         return view('posts.show', ['post' => $post]);
     }
+
+    public function like(Request $request, Post $post)
+    {
+        $post->likes()->detach($request->user()->id);
+        $post->likes()->attach($request->user()->id);
+
+        return [
+            'id' => $post->id,
+            'countLikes' => $post->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, Post $post)
+    {
+        $post->likes()->detach($request->user()->id);
+
+        return [
+            'id' => $post->id,
+            'countLikes' => $post->count_likes,
+        ];
+    }
+
 }
