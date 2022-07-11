@@ -5,6 +5,6 @@ import PostLike from './components/PostLike'
 const app = new Vue({
   el: '#app',
   components: {
-    ArticleLike,
+    PostLike,
   }
 })

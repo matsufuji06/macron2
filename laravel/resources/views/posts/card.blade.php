@@ -86,4 +86,10 @@
       </div>
     </div>
   </div>
+  <div class="card-body pt-0 pb-2 pl-3">
+    <div class="card-text">
+      <post-like>
+      </post-like>
+    </div>
+  </div>
 </div>
