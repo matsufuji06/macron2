@@ -28,9 +28,15 @@ class PostController extends Controller
         $post->protein = $request->protein;
         $post->calorie = $request->calorie;
         $post->weight = $request->weight;
+        // $post->fill($request->all()); 
         $post->user_id = $request->user()->id;
         $post->save();
         return redirect()->route('posts.index');
 
+    }
+
+    public function edit(Post $post) {
+        return view('post.edit', ['post' => $post]);
+        
     }
 }
