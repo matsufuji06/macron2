@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    // ポリシーとの連携
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
     public function index()
     {
         $posts = Post::all()->sortByDesc('created_at');
