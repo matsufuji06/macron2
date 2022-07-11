@@ -15,4 +15,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('/posts', 'PostController')->middleware('auth');
+Route::resource('/posts', 'PostController')->except(['show'])->middleware('auth');
+Route::resource('/posts', 'PostController')->only(['show']);
+
