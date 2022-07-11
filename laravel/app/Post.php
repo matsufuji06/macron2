@@ -35,5 +35,11 @@ class Post extends Model
         return $user ? (bool)$this->likes->where('id', $user->id)->count() : false;
 
     }
+
+    // ある記事に紐付いたいいねの数を返す
+    public function getCountLikesAttribute(): int
+    {
+        return $this->likes->count();
+    }
     
 }

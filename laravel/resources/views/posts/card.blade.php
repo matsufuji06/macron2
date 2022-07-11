@@ -88,7 +88,10 @@
   </div>
   <div class="card-body pt-0 pb-2 pl-3">
     <div class="card-text">
-      <post-like :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'>
+      <post-like 
+      :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
+      :initial-count-likes='@json($post->count_likes)'
+      >
       </post-like>
     </div>
   </div>
