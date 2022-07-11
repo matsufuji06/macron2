@@ -39,4 +39,23 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
 
     }
+
+    public function update(PostRequest $request, Post $post) {
+        $post->food = $request->food;
+        $post->image = $request->image;
+        $post->carbo = $request->carbo;
+        $post->fat = $request->fat;
+        $post->protein = $request->protein;
+        $post->calorie = $request->calorie;
+        $post->weight = $request->weight;
+        // $post->fill($request->all())->save(); 
+        $post->save();
+        return redirect()->route('posts.index');
+    }
+
+    public function destroy(Post $post) {
+        $post->delete();
+        return redirect()->route('posts.index');
+        
+    }
 }
