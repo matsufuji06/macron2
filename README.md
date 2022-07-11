@@ -22,6 +22,7 @@
 - laravel (ver: 6.20.44)  
 - Docker (ver: 20.10.8)  
 - PostgreSQL (ver: 14.4)  
+- Vue.js  
 - MDBootstrap  
 
 
