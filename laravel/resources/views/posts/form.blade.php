@@ -6,6 +6,7 @@
 
 <div class="form-group">
   <post-tags-input
+  :initial-tags='@json($tagNames ?? [])'
   >
   </post-tags-input>
 </div>

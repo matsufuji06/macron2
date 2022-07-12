@@ -73,7 +73,7 @@
 |------|----|-------|
 |name|string|null: false, unique制約|
 
-### post_tagテーブル（articlesテーブルとtagsテーブルの中間テーブル）
+### post_tagテーブル（postsテーブルとtagsテーブルの中間テーブル）
 |Column|Type|Options|
 |------|----|-------|
 |post_id|int|-------|

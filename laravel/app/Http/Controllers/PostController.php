@@ -52,7 +52,15 @@ class PostController extends Controller
     }
 
     public function edit(Post $post) {
-        return view('posts.edit', ['post' => $post]);
+        $tagNames = $post->tags->map(function ($tag){
+            return ['text'=>$tag->name];
+        });
+
+        return view('posts.edit', [
+            'post' => $post,
+            'tagNames' => $tagNames,
+
+        ]);
 
     }
 
@@ -66,6 +74,13 @@ class PostController extends Controller
         $post->weight = $request->weight;
         // $post->fill($request->all())->save(); 
         $post->save();
+
+        $post->tags()->detach();
+        $request->tags->each(function ($tagName) use ($post){
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $post->tags()->attach($tag);
+        });
+
         return redirect()->route('posts.index');
     }
 
