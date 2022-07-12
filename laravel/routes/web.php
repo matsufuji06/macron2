@@ -21,6 +21,11 @@ Route::prefix('login')->name('login.')->group(function () {
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
 
+Route::prefix('register')->name('register.')->group(function () {
+    Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+    Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
+
 Route::resource('/posts', 'PostController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/posts', 'PostController')->only(['index', 'show']);
 
