@@ -4,6 +4,12 @@
   <input type="text" name="food" class="form-control" required value="{{ $post->food ?? old('food') }}">
 </div>
 
+<div class="form-group">
+  <post-tags-input
+  >
+  </post-tags-input>
+</div>
+
 <!-- ↓画像 -->
 <div class="form-group">
   <label></label>
