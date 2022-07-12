@@ -15,6 +15,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+});
+
 Route::resource('/posts', 'PostController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/posts', 'PostController')->only(['index', 'show']);
 
