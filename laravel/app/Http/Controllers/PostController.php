@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use App\Http\Requests\PostRequest;
 
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class PostController extends Controller
     }
 
     public function store(PostRequest $request, Post $post) {
+        // 記事の保存処理
         $post->food = $request->food;
         $post->image = $request->image;
         $post->carbo = $request->carbo;
@@ -37,7 +39,15 @@ class PostController extends Controller
         // $post->fill($request->all()); 
         $post->user_id = $request->user()->id;
         $post->save();
+        
+        // タグの保存処理
+        $request->tags->each(function($tagName) use ($post){
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $post->tags()->attach($tag);
+        });
+        
         return redirect()->route('posts.index');
+
 
     }
 
