@@ -34,6 +34,8 @@ class PostRequest extends FormRequest
             'calorie' => 'required|numeric',
             'protein' => 'required|numeric',
             'weight' => 'required|numeric',
+
+            'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
     
@@ -48,6 +50,17 @@ class PostRequest extends FormRequest
             'protein' => 'タンパク質',
             'calorie' => 'カロリー',
             'weight' => '現在の体重',
+
+            'tags' => 'タグ',
         ];
+    }
+
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+            ->slice(0, 5)
+            ->map(function ($requestTag) {
+                return $requestTag->text;
+            });
     }
 }
